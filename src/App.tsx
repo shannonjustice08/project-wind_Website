@@ -171,7 +171,7 @@ function App() {
 async function fetchDataFromSheets() {
   try {
     const SHEET_URL =
-      'https://docs.google.com/spreadsheets/d/e/2PACX-1vQ_XYbFemkaQLH0l_bB5ozp7_G9J7XwCbZBXAhgVtrA0Ldr2ZlVaw9rYGv4fZsbWzkaJotExRpFuJZW/pub?gid=798846225&single=true&output=csv';
+      'https://docs.google.com/spreadsheets/d/e/2PACX-1vQ_XYbFemkaQLH0l_bB5ozp7_G9J7XwCbZBXAhgVtrA0Ldr2ZlVaw9rYGv4fZsbWzkaJotExRpFuJZW/pub?gid=553812258&single=true&output=csv';
 
     const response = await fetch(SHEET_URL);
     const csvText = await response.text();
