@@ -401,7 +401,11 @@ function HomePage() {
           Mission Statement
         </h2>
         <p className="text-lg text-slate-200 leading-relaxed text-center max-w-4xl mx-auto">
-          This independent research project seeks to
+        This year-long independent research project aims to provide Cottage Grove, Oregon residents with 
+          honest, locally-relevant data on renewable energy performance. 
+          By measuring the real-world reliability of hybrid wind/solar systems with battery storage in our 
+          challenging climate, I hope to contribute meaningful data to our community's microgrid discussions 
+          and help homeowners make informed decisions about renewable energy adoption. 
         </p>
       </section>
 
