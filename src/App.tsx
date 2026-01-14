@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import {
   LineChart,
   Line,
@@ -14,12 +14,8 @@ import {
 import {
   Wind,
   Sun,
-  Battery,
   Mail,
-  Linkedin,
   Github,
-  Calendar,
-  DollarSign,
   Zap,
 } from 'lucide-react';
 
@@ -103,6 +99,19 @@ const sampleCostData = [
   { month: 'Apr', traditional: 105, hybrid: 35 },
 ];
 
+type EnergyData = {
+  date?: string;
+  timestamp?: string;
+  solar: number;
+  wind: number;
+  total: number;
+  batterySOC?: number;
+  windSpeed?: number;
+  temperature?: number;
+  humidity?: number;
+  [key: string]: string | number | undefined; // Allow indexing with any string
+};
+
 function App() {
   const [currentPage, setCurrentPage] = useState('home');
 
@@ -168,28 +177,41 @@ function App() {
   );
 }
 
-async function fetchDataFromSheets() {
+async function fetchDataFromSheets(): Promise<EnergyData[] | null> {
   try {
     const SHEET_URL =
-      'https://docs.google.com/spreadsheets/d/e/2PACX-1vQ_XYbFemkaQLH0l_bB5ozp7_G9J7XwCbZBXAhgVtrA0Ldr2ZlVaw9rYGv4fZsbWzkaJotExRpFuJZW/pub?gid=553812258&single=true&output=csv';
+      'https://docs.google.com/spreadsheets/d/e/2PACX-1vQ_XYbFemkaQLH0l_bB5ozp7_G9J7XwCbZBXAhgVtrA0Ldr2ZlVaw9rYGv4fZsbWzkaJotExRpFuJZW/pub?gid=798846225&single=true&output=csv';
 
     const response = await fetch(SHEET_URL);
     const csvText = await response.text();
 
     // Parse CSV to JSON
     const lines = csvText.split('\n');
-    const headers = lines[0].split(',');
+    const headers = lines[0].split(',').map(h => h.trim());
 
-    const data = lines.slice(1).map((line) => {
-      const values = line.split(',');
-      const obj = {};
-      headers.forEach((header, i) => {
-        // Clean header name and convert to camelCase
-        const key = header.trim().replace(/\s+/g, '');
-        obj[key] = isNaN(values[i]) ? values[i] : parseFloat(values[i]);
-      });
-      return obj;
-    });
+    const data: EnergyData[] = [];
+    
+    for (let i = 1; i < lines.length; i++) {
+      const values = lines[i].split(',');
+      if (values.length === headers.length) {
+        const obj: EnergyData = {
+          solar: 0,
+          wind: 0,
+          total: 0,
+        };
+        
+        headers.forEach((header, idx) => {
+          const value = values[idx]?.trim();
+          if (value) {
+            // Parse numbers, keep strings as-is
+            const numValue = parseFloat(value);
+            obj[header] = isNaN(numValue) ? value : numValue;
+          }
+        });
+        
+        data.push(obj);
+      }
+    }
 
     return data;
   } catch (error) {
@@ -457,10 +479,10 @@ function HomePage() {
 
 // ==================== PAGE 2: DATA & ANALYSIS ====================
 function DataPage() {
-  const [liveData, setLiveData] = useState(sampleEnergyData);
+  const [liveData, setLiveData] = useState<EnergyData[]>(sampleEnergyData);
   const [loading, setLoading] = useState(false);
-  const [lastUpdated, setLastUpdated] = useState(null);
-  const [error, setError] = useState(null);
+  const [lastUpdated, setLastUpdated] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   // Fetch data when page loads
   useEffect(() => {
@@ -610,13 +632,14 @@ function DataPage() {
 }
 
 /*INTERACTIVE GRAPH Function*/
-function InteractiveGraphSection() {
+function InteractiveGraphSection({ data }: { data: EnergyData[] }) {
   const [xAxis, setXAxis] = useState('date');
   const [yAxis, setYAxis] = useState('total');
 
   // Available data fields
   const dataFields = [
     { value: 'date', label: 'Date' },
+    { value: 'timestamp', label: 'Timestamp' },
     { value: 'solar', label: 'Solar Power (W)' },
     { value: 'wind', label: 'Wind Power (W)' },
     { value: 'total', label: 'Total Power (W)' },
@@ -627,19 +650,23 @@ function InteractiveGraphSection() {
   ];
 
   // Get nice labels for axes
-  const getLabel = (value) => {
+  const getLabel = (value: string) => {
     const field = dataFields.find((f) => f.value === value);
     return field ? field.label : value;
   };
 
   // Sort data by X-axis for proper line chart display
-  const sortedData = [...sampleEnergyData].sort((a, b) => {
-    // For date strings, use alphabetical sort (works for "Jan 1", "Jan 2", etc.)
-    if (xAxis === 'date') {
-      return a[xAxis].localeCompare(b[xAxis]);
+  const sortedData = [...data].sort((a, b) => {
+    const aVal = a[xAxis];
+    const bVal = b[xAxis];
+    
+    // For date/timestamp strings
+    if (xAxis === 'date' || xAxis === 'timestamp') {
+      return String(aVal || '').localeCompare(String(bVal || ''));
     }
-    // For numeric values, sort numerically
-    return a[xAxis] - b[xAxis];
+    
+    // For numeric values
+    return Number(aVal || 0) - Number(bVal || 0);
   });
 
   return (
