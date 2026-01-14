@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import  { useState, useEffect } from 'react';
 import {
   LineChart,
   Line,
@@ -248,10 +248,11 @@ function HomePage() {
               Micah Hanke
             </h3>
             <p className="text-slate-300 mb-4">
-              I am a Junior in highschool and am facinated by how energy in
+            I am a Junior in high school and am fascinated by how energy in
               generated and stored. As a result I came up with this project to
-              learn more about energy genteration and starage efficiency applied
-              to actual usecases.
+              learn more about energy generation and storage efficiency applied
+              to actual use cases.
+
             </p>
             <p className="text-slate-300">
               I am working toward a career in Energy Engineering, and am excited
@@ -301,11 +302,12 @@ function HomePage() {
               Why This Project Matters
             </h3>
             <p className="text-slate-300 mb-4">
-              Oregon's climate is not the most ideal for renweable energy. With
+            Oregon's climate is not the most ideal for renewable energy. With
               could cover as often as half of the year and winds that can't even
-              steal a child's baloon there just is not much energy to capture.
+              steal a child's balloon there just is not much energy to capture.
               With this in mind, how can a resident know if the whole concept of
-              renewable energy is even possible or worth it for them?
+              Is renewable energy even possible or worth it for them?
+
             </p>
             <p className="text-slate-300 mb-4">
               This project aims to provide honest, locally-relevant performance
@@ -352,7 +354,7 @@ function HomePage() {
                 <p className="text-slate-400 text-sm">
                   Test multiple control strategies to optimize battery
                   performance and increase efficiency (this is what will
-                  hopefully make things cheeper for you)
+                  hopefully make things cheaper for you)
                 </p>
               </div>
               <div className="bg-slate-900/50 p-4 rounded border border-slate-600">
@@ -396,14 +398,15 @@ function HomePage() {
               Community Impact
             </h3>
             <p className="text-slate-300 mb-4">
-              Everyone hears about climate change and switching to renewable
+            Everyone hears about climate change and switching to renewable
               energy, but all they see is a huge bill they can afford and a lot
               of extra work with little to no payout. I want to make it so
               people in my community know if it is possible for them to have a
-              renewable energy system without using their kids college money.
-              With transparent performance expectation baised on local data I
+              renewable energy system without using their kids' college money.
+              With transparent performance expectation based on local data I
               hope to give people the information to know if they can or even
               should switch.
+
             </p>
             <p className="text-slate-300">
               Upon completion, I'll present findings to local schools, community
@@ -819,8 +822,8 @@ function InteractiveGraphSection({ data }: { data: EnergyData[] }) {
 function BlogPage() {
   const blogPosts = [
     {
-      title: 'Project Kickoff - January 2026',
-      date: 'January 7, 2026',
+      title: 'Project Kickoff ? - January 2026',
+      date: 'January ?, 2026',
       category: 'Development Log',
       content: `Today marks the official start of data collection. After months of planning and equipment setup, 
       the weather station is operational and the commercial wind turbine and solar panel have arrived. 
