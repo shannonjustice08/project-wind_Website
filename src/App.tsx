@@ -1481,7 +1481,7 @@ function CreditsPage() {
       {/* Mentors & Advisors */}
       <section className="mb-12">
         <h2 className="text-2xl font-bold mb-6 text-slate-200">
-          Mentors & Advisors
+          Mentors, Advisors, & Inspiration
         </h2>
         <div className="grid md:grid-cols-2 gap-6">
           <div className="bg-slate-800/50 border border-slate-700 rounded-lg p-6">
