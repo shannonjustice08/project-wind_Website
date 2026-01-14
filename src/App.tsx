@@ -248,7 +248,7 @@ function HomePage() {
               Micah Hanke
             </h3>
             <p className="text-slate-300 mb-4">
-            I am a Junior in high school and am fascinated by how energy in
+            I am a Junior in high school and am fascinated by how energy is
               generated and stored. As a result I came up with this project to
               learn more about energy generation and storage efficiency applied
               to actual use cases.
@@ -303,10 +303,10 @@ function HomePage() {
             </h3>
             <p className="text-slate-300 mb-4">
             Oregon's climate is not the most ideal for renewable energy. With
-              could cover as often as half of the year and winds that can't even
+              cloud cover as often as half of the year and winds that can't even
               steal a child's balloon there just is not much energy to capture.
               With this in mind, how can a resident know if the whole concept of
-              Is renewable energy even possible or worth it for them?
+              renewable energy is even possible or worth it for them?
 
             </p>
             <p className="text-slate-300 mb-4">
@@ -364,7 +364,7 @@ function HomePage() {
                 <p className="text-slate-400 text-sm">
                   Design custom turbines optimized for low-wind Willamette
                   Valley conditions (more power from the system equals better
-                  P.S. I also want to see if I can reduce cost of getting the
+                  P.S. I also want to see if I can reduce the cost of getting the
                   turbine for people. Mine was $340 with shipping!)
                 </p>
               </div>
@@ -379,14 +379,14 @@ function HomePage() {
               The system uses commercial wind turbine and solar panels, battery
               storage, and automated data collection via ESP32 microcontroller
               with WiFi logging. A custom weather station (DHT22 sensor (this
-              was a poor choice for my ), anemometer) records local conditions
+              was a poor choice for me ), anemometer) records local conditions
               every minute, enabling correlation between weather patterns and
               energy generation.
             </p>
             <p className="text-slate-300">
               All data collection is automated to accommodate my schedule
               because as a full time student athlete I don't have much time to
-              do mainenence. With an automated system only 30 minutes per week
+              do maintenance. With an automated system only 30 minutes per week
               is needed for system maintenance and data review. Which works
               great because then all information is live and people can see real
               time data.
@@ -1514,7 +1514,7 @@ function CreditsPage() {
           Mentors, Advisors, & Inspiration
         </h2>
         <div className="grid md:grid-cols-2 gap-6">
-          <div className="bg-slate-800/50 border border-slate-700 rounded-lg p-6">
+          {/* <div className="bg-slate-800/50 border border-slate-700 rounded-lg p-6">
             <h3 className="text-lg font-semibold text-emerald-400 mb-2">
               Dr. Ted Brekken
             </h3>
@@ -1525,7 +1525,36 @@ function CreditsPage() {
               Inspiration for project methodology through research on optimal
               energy storage sizing and control.
             </p>
+          </div> */}
+          <div className="bg-slate-800/50 border border-slate-700 rounded-lg p-6">
+            <h3 className="text-lg font-semibold text-emerald-400 mb-2">
+              Kyle Mullen
+            </h3>
+            <p className="text-slate-500 text-sm mb-2">Cottage Grove Highschool</p>
+            <p className="text-slate-400 text-sm">Mr.Mullen is my computer science teacher. He has taught me
+            from my first line of code to Arduinos to how to approach challenges. He has shaped the ways
+             I think and act when facing a setback. He also acted as a bit of a sounding board for this project
+              and helped me review things such as this website.
+            </p>
           </div>
+
+          <div className="bg-slate-800/50 border border-slate-700 rounded-lg p-6">
+            <h3 className="text-lg font-semibold text-emerald-400 mb-2">
+              Dakota Roth
+            </h3>
+            <p className="text-slate-500 text-sm mb-2">Student at Oregon State University</p>
+            <p className="text-slate-400 text-sm">Dakota helped me through lots of stuckpoints and hangups. He helped me 
+            clear my head on multiple occasions and has been a real help with staying on track and motivated. He also supplied me with resources to look into as well as recommendations on hardware for my specific purposes.  Also acted as a friend and companion helping me with burnout.</p>
+          </div>
+
+          <div className="bg-slate-800/50 border border-slate-700 rounded-lg p-6">
+            <h3 className="text-lg font-semibold text-emerald-400 mb-2">
+              Cole Bentley
+            </h3>
+            <p className="text-slate-500 text-sm mb-2">Student at Oregon Institute of Technology</p>
+            <p className="text-slate-400 text-sm">Provided advice and helped me ground myself. Helped me through challenges and helped me find the correct equipment when I was unsure. Also acted as a friend and companion helping me with burnout.</p>
+          </div>
+
 
           {/* Template for additional mentors */}
           {/* <div className="bg-slate-800/50 border border-slate-700 rounded-lg p-6 opacity-50">
@@ -1592,6 +1621,7 @@ function CreditsPage() {
             <p>Cole Bentley</p>
             <p>Jole Lindstrom</p>
             <p>Kelly Cunningham</p>
+            <p>Kyle Mullen</p>
           </div>
         </div>
       </section>
